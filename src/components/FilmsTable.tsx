@@ -1,4 +1,4 @@
-import { Table } from "antd";
+import { Button, Table } from "antd";
 
 const FilmsTable = ({ filmsList }) => {
   const columns = [
@@ -27,6 +27,13 @@ const FilmsTable = ({ filmsList }) => {
       key: "release_date",
       dataIndex: "release_date",
     },
+    {
+      title: "Options",
+      key: "release_date",
+      render: () => {
+        return <Button>Read more</Button>;
+      },
+    },
   ];
 
   const rows = filmsList?.results?.map((item) => ({
@@ -36,12 +43,14 @@ const FilmsTable = ({ filmsList }) => {
 
   return (
     <div>
-      <Table
-        className={"custom-table"}
-        columns={columns}
-        dataSource={rows}
-        pagination={{ pageSize: 3, total: filmsList?.count, align: "center" }}
-      />
+      {filmsList?.results?.length > 0 && (
+        <Table
+          className={"custom-table"}
+          columns={columns}
+          dataSource={rows}
+          pagination={{ pageSize: 3, total: filmsList?.count, align: "center" }}
+        />
+      )}
     </div>
   );
 };

@@ -1,0 +1,82 @@
+/* Estilos para a lista de filmes */
+.listFilm {
+    padding: 20px;
+    border-radius: 8px;
+}
+
+/* Estilos para a tabela customizada */
+.custom-table .ant-table {
+    /*background-color: #14081e; !* Fundo da tabela *!*/
+    background: linear-gradient(135deg, rgba(20, 8, 30, 0.9), rgba(72, 42, 92, 0.8), rgba(20, 8, 30, 0.9));
+
+    color: #ffffff; /* Texto branco */
+    border-radius: 8px;
+}
+
+.custom-table .ant-table-thead > tr > th {
+    background-color: #000000; /* Fundo do cabeçalho */
+    color: #ffffff;
+    font-weight: bold;
+}
+
+.custom-table .ant-table-tbody > tr > td {
+    color: #d1d1d6; /* Texto levemente cinza */
+    border-color: #444; /* Bordas discretas */
+}
+
+.custom-table .ant-table-tbody > tr:hover > td {
+    background-color: #472c63 !important;
+    color: #d6d1d1; /* Texto levemente cinza */
+
+
+}
+
+/* Imagem do pôster */
+.custom-table img {
+    border-radius: 4px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* Estilos para o campo de busca */
+.ant-input-affix-wrapper {
+    background-color: #3a3a4c !important;
+    color: #ffffff;
+    border: 1px solid #5e5e73;
+    border-radius: 4px;
+}
+
+.ant-input-affix-wrapper .ant-input {
+    color: #ffffff;
+    background-color: #3a3a4c !important;
+
+}
+
+.ant-input-affix-wrapper:hover {
+    border-color: #757595;
+}
+
+/* Botão de pesquisa */
+.ant-input-search-button {
+    background-color: #4e4e68;
+    color: #ffffff;
+    border: none;
+    border-radius: 4px;
+}
+
+/* Estilos para o Select */
+.ant-select-selector {
+    background-color: #3a3a4c;
+    color: #ffffff;
+    border: 1px solid #5e5e73;
+    border-radius: 4px;
+}
+
+.ant-select-dropdown {
+    background-color: #2a2a3c;
+    color: #ffffff;
+}
+
+.ant-select-item-option:hover {
+    background-color: #4e4e68;
+    color: #ffffff;
+}
