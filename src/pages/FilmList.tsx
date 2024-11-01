@@ -7,16 +7,17 @@ import "../styles/filmList.css";
 
 const FilmList = () => {
   const [films, setFilms] = useState<any>([]);
+  const [title, setTitle] = useState<any>([]);
 
   async function getFilmsList() {
-    const response = await getFilms();
+    const response = await getFilms(title);
 
     setFilms(response);
   }
 
   useEffect(() => {
     getFilmsList().then();
-  }, []);
+  }, [title]);
 
   return (
     <div
@@ -34,6 +35,8 @@ const FilmList = () => {
         }}
       >
         <Search
+          value={title}
+          onChange={(e) => setTitle(e.target.value)}
           size={"large"}
           style={{ marginBottom: 50 }}
           placeholder="input search text"

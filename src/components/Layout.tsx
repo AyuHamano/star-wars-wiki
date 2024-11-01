@@ -13,8 +13,8 @@ const Layout = ({ children }: { children: ReactNode }) => {
     >
       <div style={{ width: "100%" }}>
         <img
-          width={400}
-          height={350}
+          width={250}
+          height={250}
           src={"src/assets/films/star-wars-logo-1002.png"}
         />
       </div>

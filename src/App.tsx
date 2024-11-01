@@ -4,8 +4,8 @@ import FilmList from "./pages/FilmList.tsx";
 
 function App() {
   return (
-    <main>
-      <Layout>
+    <main className="main-content">
+      <Layout >
         <FilmList />
       </Layout>
     </main>
