@@ -1,25 +1,24 @@
-import { ReactNode } from "react";
+import "../styles/NavBar.css";
+import { Outlet } from "react-router";
 
-const Layout = ({ children }: { children: ReactNode }) => {
+const Layout = () => {
   return (
-    <div
-      style={{
-        margin: 0,
-        width: "100%",
-        display: "flex",
-        flexDirection: "column",
-        justifyContent: "space-between",
-      }}
-    >
-      <div style={{ width: "100%" }}>
-        <img
-          width={250}
-          height={250}
-          src={"src/assets/films/star-wars-logo-1002.png"}
-        />
-      </div>
-      {children}
-    </div>
+    <main>
+      <header>
+        <nav className="navbar">
+          <div className="logo">
+            <img src="../../public/star-wars-logo-1002.png" alt="Logo" />
+          </div>
+          <div className="options">
+            <a key="1">Films</a>
+            <a key="2">Characters</a>
+            <a key="3">Planets</a>
+          </div>
+        </nav>
+      </header>
+
+      <Outlet />
+    </main>
   );
 };
 

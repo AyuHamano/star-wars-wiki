@@ -4,6 +4,18 @@
     border-radius: 8px;
 }
 
+h1 {
+    text-align: center;
+    font-weight: bold;
+    font-family: 'Arial', sans-serif; /* Escolha uma fonte semelhante se não tiver a original */
+    font-size: 3em;
+    color: #ffffff;
+    letter-spacing: 0.1em;
+    margin: 0.5em 0;
+
+    /* Efeito de sombra para imitar o estilo Star Wars */
+}
+
 /* Estilos para a tabela customizada */
 .custom-table .ant-table {
     /*background-color: #14081e; !* Fundo da tabela *!*/
@@ -40,7 +52,7 @@
 /* Estilos para o campo de busca */
 .ant-input-affix-wrapper {
     background-color: #3a3a4c !important;
-    color: #ffffff;
+    color: #ffffff !important;
     border: 1px solid #5e5e73;
     border-radius: 4px;
 }
@@ -65,18 +77,18 @@
 
 /* Estilos para o Select */
 .ant-select-selector {
-    background-color: #3a3a4c;
+    background-color: #3636c3;
     color: #ffffff;
-    border: 1px solid #5e5e73;
+!important border: 1 px solid #5e5e73;
     border-radius: 4px;
 }
 
 .ant-select-dropdown {
-    background-color: #2a2a3c;
-    color: #ffffff;
+    background-color: #d2d2dd;
+    color: #ffffff !important;
 }
 
 .ant-select-item-option:hover {
     background-color: #4e4e68;
-    color: #ffffff;
+    color: #ffffff !important;
 }
