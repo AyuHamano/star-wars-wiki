@@ -113,8 +113,9 @@ const CharactersList = () => {
           <h3 style={{ textAlign: "center" }}>No results found</h3>
         </div>
       )}
-
-      <ModalCharacters open={open} setOpen={setOpen} id={characterId ?? ""} />
+      <Col xs={24} sm={12} md={8} lg={6}>
+        <ModalCharacters open={open} setOpen={setOpen} id={characterId ?? ""} />
+      </Col>
     </div>
   );
 };
