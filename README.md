@@ -1,8 +1,5 @@
 # React + TypeScript + Vite
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
 ### Comandos inicializar o projeto:
 
 ```
@@ -15,7 +12,13 @@
     npm run dev
 ```
 
-### Para inicializar os testes unitários
-```
-    npm test
-```
+### Template do projeto
+- Ant Design
+
+### Recursos
+- Busca por nome e filtros de diretores/produtores
+- Paginação e tabelas
+- Visualização de modais
+- Responsividade
+- Utilização de Redux para filtros
+- Deploy via AWS Cloud Front: [Acesse o link](https://dkvcrximzonc4.cloudfront.net/ )
