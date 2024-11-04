@@ -1,23 +1,12 @@
 import axiosInstance from "./axiosInstance.ts";
 
-const getFilms = async (title?: string) => {
-  const url = title ? "films/?search=" + title : "films";
-
+const getByUrl = async (url: string, params?: { search: string }) => {
   try {
-    const response = await axiosInstance.get(url);
-    return response.data;
+    const { data } = await axiosInstance.get(url, { params });
+    return data;
   } catch (error) {
-    console.error(error);
+    alert("Failed to fetch data " + error);
   }
 };
 
-const getPeople = async () => {
-  try {
-    const response = await axiosInstance.get("people");
-    return response.data;
-  } catch (error) {
-    console.error(error);
-  }
-};
-
-export { getFilms, getPeople };
+export { getByUrl };
