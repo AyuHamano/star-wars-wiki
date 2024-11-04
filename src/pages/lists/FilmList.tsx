@@ -62,7 +62,6 @@ const FilmList = () => {
 
   return (
     <div className={"listFilm"} style={{}}>
-      {/*<h1>Films</h1>*/}
       <div
         className={"search-container"}
         style={{

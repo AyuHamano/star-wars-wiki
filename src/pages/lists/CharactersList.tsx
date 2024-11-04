@@ -8,6 +8,8 @@ import { CharacterType } from "../../type/CharacterType.ts";
 import { Card, Col, Pagination, Row } from "antd";
 import ModalCharacters from "../../components/ModalCharacters.tsx";
 import { getCharacterId } from "../../utils/utils-functions.ts";
+import { MoonLoader } from "react-spinners";
+import Grid from "antd/es/card/Grid";
 
 const CharactersList = () => {
   const [name, setName] = useState("");
@@ -16,17 +18,21 @@ const CharactersList = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [open, setOpen] = useState<boolean>(false);
   const [characterId, setCharacterId] = useState<string>();
+  const [loading, setLoading] = useState(false);
 
   async function getCharacters(page: number) {
     const params = {
       page: page,
       search: name,
     };
+    setLoading(true);
     try {
       const response = await getByUrl("people", params);
       setCharacters(response);
     } catch (e) {
       alert("Failed to fetch data " + e);
+    } finally {
+      setLoading(false);
     }
   }
 
@@ -58,7 +64,7 @@ const CharactersList = () => {
           enterButton
         />
       </div>
-      {!!characters?.results?.length && (
+      {!loading ? (
         <>
           <Row justify="end">
             <Pagination
@@ -106,9 +112,13 @@ const CharactersList = () => {
             ))}
           </Row>
         </>
+      ) : (
+        <Grid style={{ padding: 20 }}>
+          <MoonLoader color={"#ffffff"} />
+        </Grid>
       )}
 
-      {!characters?.results?.length && (
+      {!characters?.results?.length && !loading && (
         <div style={{ height: 500 }}>
           <h3 style={{ textAlign: "center" }}>No results found</h3>
         </div>
