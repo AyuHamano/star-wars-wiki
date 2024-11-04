@@ -7,12 +7,15 @@ import Search from "antd/es/input/Search";
 import { ListResponseApiType } from "../../utils/type/ListResponseApiType.ts";
 import { PlanetType } from "../../utils/type/PlanetType.ts";
 import { ColumnsType } from "antd/es/table";
+import ModalPlanet from "../../components/ModalPlanet.tsx";
 
 const PlanetsList = () => {
   const [name, setName] = useState("");
   const [planets, setPlanets] =
     useState<ListResponseApiType<PlanetType> | null>(null);
+  const [planet, setPlanet] = useState<PlanetType>();
   const [currentPage, setCurrentPage] = useState(1); // Estado para a página atual
+  const [open, setOpen] = useState<boolean>(false);
 
   async function getPlanetsList(page: number) {
     const params = {
@@ -37,23 +40,6 @@ const PlanetsList = () => {
       dataIndex: "name",
       key: "name",
       sorter: (a, b) => a.name.localeCompare(b.name),
-    },
-    {
-      title: "Rotation Period",
-      dataIndex: "rotation_period",
-      key: "rotation_period",
-      sorter: (a, b) =>
-        parseInt(a.rotation_period) - parseInt(b.rotation_period),
-      render: (text) => (text === "unknown" ? "-" : text),
-      responsive: ["lg"],
-    },
-    {
-      title: "Orbital Period",
-      dataIndex: "orbital_period",
-      key: "orbital_period",
-      sorter: (a, b) => parseInt(a.orbital_period) - parseInt(b.orbital_period),
-      render: (text) => (text === "unknown" ? "-" : text),
-      responsive: ["lg"],
     },
     {
       title: "Diameter",
@@ -84,13 +70,6 @@ const PlanetsList = () => {
       responsive: ["md"],
     },
     {
-      title: "Surface Water",
-      dataIndex: "surface_water",
-      key: "surface_water",
-      sorter: (a, b) => parseInt(a.surface_water) - parseInt(b.surface_water),
-      render: (text) => (text === "unknown" ? "-" : `${text}%`),
-    },
-    {
       title: "Population",
       dataIndex: "population",
       key: "population",
@@ -99,15 +78,13 @@ const PlanetsList = () => {
     },
   ];
 
+  const onRowClick = (planet: PlanetType) => {
+    setPlanet(planet);
+    setOpen(true);
+  };
+
   return (
-    <div
-      className={"listFilm"}
-      style={{
-        display: "flex",
-        justifyContent: "space-between",
-        flexDirection: "column",
-      }}
-    >
+    <div className={"listFilm"}>
       <div className={"search-container"}>
         <Search
           className={"search-box"}
@@ -136,12 +113,17 @@ const PlanetsList = () => {
             onChange: (page) => setCurrentPage(page),
             align: "center",
           }}
+          onRow={(planet: PlanetType) => ({
+            onClick: () => onRowClick(planet), // Chama a função ao clicar na linha
+          })}
         />
       ) : (
         <div style={{ height: 500 }}>
           <h3 style={{ textAlign: "center" }}>No results found</h3>
         </div>
       )}
+
+      <ModalPlanet open={open} setOpen={setOpen} planet={planet} />
     </div>
   );
 };

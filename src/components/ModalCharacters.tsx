@@ -17,7 +17,6 @@ interface ModalProps {
 const ModalCharacters = ({ open, setOpen, id }: ModalProps) => {
   const [character, setCharacter] = useState<CharacterType | null>(null);
   const [planet, setPlanet] = useState<PlanetType | null>(null);
-
   const [loading, setLoading] = useState(true);
 
   async function fetchCharacterAndPlanet() {
@@ -75,28 +74,27 @@ const ModalCharacters = ({ open, setOpen, id }: ModalProps) => {
                 <b>Birth Year:</b> {character?.birth_year}
               </p>
               <p>
-                <b>Director:</b> {character?.height} cm
+                <b>Height:</b> {character?.height} cm
               </p>
               <p>
-                <b>Mass: </b> {character?.mass} kg
+                <b>Mass:</b> {character?.mass} kg
               </p>
             </Grid>
             <Grid>
               <p>
-                <b>Hair Color: </b>
-                {character?.hair_color}
+                <b>Hair Color:</b> {character?.hair_color}
               </p>
               <p>
-                <b>Skin Color: </b>
-                {character?.skin_color}
+                <b>Skin Color:</b> {character?.skin_color}
               </p>
               <p>
-                <b>Eyes Color: </b>
-                {character?.eye_color}
+                <b>Eyes Color:</b> {character?.eye_color}
               </p>
             </Grid>
           </div>
-          {planet && <ModalInfoPlanet planet={planet} />}
+          {planet && (
+            <ModalInfoPlanet planet={planet} isPlanetCharacterSpecie={true} />
+          )}
         </Grid>
       </Grid>
     </Modal>

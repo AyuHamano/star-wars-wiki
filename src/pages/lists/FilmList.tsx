@@ -70,6 +70,7 @@ const FilmList = () => {
           justifyContent: "space-between",
           gap: 10,
           flexWrap: "wrap",
+          marginBottom: 80,
         }}
       >
         <Search

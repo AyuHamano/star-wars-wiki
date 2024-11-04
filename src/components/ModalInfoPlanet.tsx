@@ -1,16 +1,31 @@
 import Grid from "antd/lib/card/Grid";
 import { PlanetType } from "../utils/type/PlanetType.ts";
 
-const ModalInfoPlanet = ({ planet }: { planet: PlanetType }) => {
+const ModalInfoPlanet = ({
+  planet,
+  isPlanetCharacterSpecie,
+}: {
+  planet: PlanetType;
+  isPlanetCharacterSpecie: boolean;
+}) => {
   return (
     <>
-      {" "}
-      <h3 className={"titleModal"}>Homeworld</h3>
+      {isPlanetCharacterSpecie && <h3 className={"titleModal"}>Homeworld</h3>}{" "}
       <div className={"modalContentFilm"}>
         <Grid>
+          {isPlanetCharacterSpecie && (
+            <p>
+              <b>Planet: </b>
+              {planet?.name}
+            </p>
+          )}
           <p>
-            <b>Planet: </b>
-            {planet?.name}
+            <b>Orbital period: </b>
+            {planet?.rotation_period}
+          </p>
+          <p>
+            <b>Surface Water: </b>
+            {planet?.surface_water}
           </p>
           <p>
             <b>Diameter: </b>
@@ -29,7 +44,7 @@ const ModalInfoPlanet = ({ planet }: { planet: PlanetType }) => {
           <p>
             <b>Orbital period: </b>
             {planet?.orbital_period}
-          </p>
+          </p>{" "}
           <p>
             <b>Population: </b>
             {planet?.population}

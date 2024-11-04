@@ -100,7 +100,7 @@ const ModalSpecie = ({ open, setOpen, id }: ModalProps) => {
             </Grid>
           </div>
           {planet && planet?.name !== "unknown" && (
-            <ModalInfoPlanet planet={planet} />
+            <ModalInfoPlanet planet={planet} isPlanetCharacterSpecie={true} />
           )}
         </Grid>
       </Grid>
