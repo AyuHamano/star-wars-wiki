@@ -95,20 +95,6 @@ const ModalCharacters = ({ open, setOpen, id }: ModalProps) => {
                 {character?.eye_color}
               </p>
             </Grid>
-            <Grid>
-              <p>
-                <b>Hair Color: </b>
-                {character?.hair_color}
-              </p>
-              <p>
-                <b>Skin Color: </b>
-                {character?.skin_color}
-              </p>
-              <p>
-                <b>Eyes Color: </b>
-                {character?.eye_color}
-              </p>
-            </Grid>
           </div>
           {planet && <ModalInfoPlanet planet={planet} />}
         </Grid>

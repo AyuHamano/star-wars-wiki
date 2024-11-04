@@ -1,8 +1,22 @@
-/* Estilo para os cards customizados */
+.search-container {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    max-width: 600px;
+    margin: 20px auto;
+}
+
+.listFilm {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0 20px;
+}
+
 .custom-card {
-    background-color: #14081e; /* Fundo escuro similar à tabela */
+    background-color: #14081e;
     background: linear-gradient(135deg, rgba(37, 17, 46, 0.9), rgb(7, 9, 50), rgba(39, 15, 60, 0.9));
-    color: #ffffff; /* Cor do texto */
+    color: #ffffff;
     border-radius: 8px;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
     overflow: hidden;
@@ -15,33 +29,50 @@
 }
 
 .custom-card .ant-card-meta-title {
-    color: #ffffff; /* Cor do título do card */
+    color: #ffffff;
     font-weight: bold;
 }
 
 .custom-card .ant-card-meta-description {
-    color: #d1d1d6; /* Cor da descrição do card, levemente cinza */
+    color: #d1d1d6;
 }
 
-.custom-card img {
-    border-radius: 4px;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
-}
-
-/* Card ao passar o mouse */
 .custom-card:hover {
     background: linear-gradient(135deg, rgba(89, 46, 110, 0.9), rgb(29, 33, 120), rgba(55, 14, 90, 0.9));
 }
 
-/* Estilo para o título dos cards */
-.custom-card .title {
-    text-align: center;
-    font-size: 1.2em;
-    font-weight: bold;
-    color: #ffffff;
+.custom-card .specie-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 8px 8px 0 0;
 }
 
-.listCard .ant-col {
+@media (max-width: 768px) {
+    .custom-card {
+        width: 100%;
+    }
+
+    .search-container {
+        max-width: 100%;
+        padding: 0 10px;
+    }
+}
+
+/* Largura total dos cards em telas muito pequenas */
+@media (max-width: 480px) {
+    .custom-card {
+        width: 100%;
+        margin: 10px 0;
+    }
+
+    .search-container {
+        max-width: 100%;
+        padding: 0 5px;
+    }
+}
+
+.listCard {
     display: flex;
     justify-content: center;
     width: 100%;

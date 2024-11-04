@@ -13,9 +13,8 @@ const CharactersList = () => {
   const [name, setName] = useState("");
   const [characters, setCharacters] =
     useState<ListResponseApiType<CharacterType>>();
-  const [currentPage, setCurrentPage] = useState(1); // Estado para a página atual
+  const [currentPage, setCurrentPage] = useState(1);
   const [open, setOpen] = useState<boolean>(false);
-
   const [characterId, setCharacterId] = useState<string>();
 
   async function getCharacters(page: number) {
@@ -33,55 +32,54 @@ const CharactersList = () => {
 
   useEffect(() => {
     const debounce = setTimeout(() => getCharacters(currentPage), 1000);
-
     return () => clearTimeout(debounce);
-  }, [currentPage, name]);
+  }, [name]);
+
+  useEffect(() => {
+    getCharacters(currentPage).then();
+  }, [currentPage]);
 
   const handlePageChange = (page: number) => {
     setCurrentPage(page);
   };
+
   return (
-    <div
-      className={"listFilm"}
-      style={{
-        display: "flex",
-        justifyContent: "space-between",
-        flexDirection: "column",
-      }}
-    >
-      <div
-        style={{
-          display: "flex",
-          alignItems: "center",
-          gap: 10,
-          justifyContent: "space-between",
-        }}
-      >
+    <div className="listFilm">
+      <div className="search-container">
         <Search
-          className={"search-box"}
+          className="search-box"
           value={name}
           onChange={(e) => {
             setCurrentPage(1);
             setName(e.target.value);
           }}
-          size={"large"}
+          size="large"
           placeholder="Search"
           enterButton
-          color={"black"}
         />
       </div>
-
       {!!characters?.results?.length && (
         <>
-          <Row gutter={[20, 20]} justify="start" style={{ width: 1000 }}>
+          <Row justify="end">
+            <Pagination
+              showSizeChanger={false}
+              style={{ textAlign: "center", marginTop: "20px" }}
+              current={currentPage}
+              pageSize={10}
+              total={characters?.count}
+              onChange={handlePageChange}
+            />
+          </Row>
+
+          <Row gutter={[20, 20]} justify="center">
             {characters?.results.map((character) => (
               <Col
-                className={"listCard"}
+                className="listCard"
                 key={character.url}
                 xs={24}
                 sm={12}
-                md={12}
-                lg={8}
+                md={8}
+                lg={6}
                 onClick={() => {
                   setCharacterId(getCharacterId(character.url));
                   setOpen(true);
@@ -89,13 +87,13 @@ const CharactersList = () => {
               >
                 <Card
                   className="custom-card"
-                  style={{ width: 240, height: 400 }}
                   hoverable
                   cover={
                     <img
                       alt={character.name}
-                      style={{ width: 240, height: 300 }}
-                      src={`https://starwars-visualguide.com/assets/img/characters/${character.url.split("/").slice(-2, -1)}.jpg`}
+                      src={`https://starwars-visualguide.com/assets/img/characters/${character.url
+                        .split("/")
+                        .slice(-2, -1)}.jpg`}
                     />
                   }
                 >
@@ -106,16 +104,6 @@ const CharactersList = () => {
                 </Card>
               </Col>
             ))}
-          </Row>
-          <Row justify={"center"}>
-            <Pagination
-              showSizeChanger={false}
-              style={{ textAlign: "center", marginTop: "20px" }}
-              current={currentPage}
-              pageSize={10}
-              total={characters?.count} // Número total de personagens na API SWAPI
-              onChange={handlePageChange}
-            />
           </Row>
         </>
       )}

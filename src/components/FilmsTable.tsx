@@ -1,4 +1,6 @@
 import { Table } from "antd";
+import { ColumnType } from "antd/es/table";
+
 import { FilmType } from "../utils/type/FilmType.ts";
 import "react-loading-skeleton/dist/skeleton.css";
 import Skeleton from "react-loading-skeleton";
@@ -11,8 +13,7 @@ interface FilmsTableProps {
 
 const FilmsTable = ({ filmsList, total, onRowClick }: FilmsTableProps) => {
   const urlImg = "https://starwars-visualguide.com/assets/img/films/{id}.jpg";
-
-  const columns = [
+  const columns: ColumnType<FilmType>[] = [
     {
       title: "Poster",
       render: (episode_id: number) => (
@@ -40,8 +41,7 @@ const FilmsTable = ({ filmsList, total, onRowClick }: FilmsTableProps) => {
       title: "Producer",
       key: "producer",
       dataIndex: "producer",
-      maxWidth: 400,
-      minWidth: 400,
+      responsive: ["xs", "sm", "md", "lg"],
     },
     {
       title: "Release date",

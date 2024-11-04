@@ -26,7 +26,7 @@ const ImageCarousel = ({
     },
     tablet: {
       breakpoint: { max: 768, min: 464 },
-      items: 2,
+      items: 1,
     },
     mobile: {
       breakpoint: { max: 464, min: 0 },
@@ -49,19 +49,15 @@ const ImageCarousel = ({
         itemClass="carousel-item-padding-40-px"
       >
         {imgList.map((url, index) => (
-          <div key={index} style={{ textAlign: "center" }}>
-            <img
-              onClick={() => (onClick ? onClick(url) : null)}
-              src={url}
-              alt={`Carousel ${index + 1}`}
-              width={200}
-              height={250}
-              style={{
-                cursor: "pointer",
-                borderRadius: "8px",
-              }}
-            />
-          </div>
+          <img
+            onClick={() => (onClick ? onClick(url) : null)}
+            src={url}
+            alt={`Carousel ${index + 1}`}
+            style={{
+              cursor: "pointer",
+              borderRadius: "8px",
+            }}
+          />
         ))}
       </Carousel>
     </Grid>

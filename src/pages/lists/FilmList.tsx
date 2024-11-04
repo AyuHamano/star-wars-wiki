@@ -16,6 +16,7 @@ import {
 import starWarsProducers from "../../mock-data/starWarsProducers.ts";
 import { useNavigate } from "react-router";
 import { ListResponseApiType } from "../../utils/type/ListResponseApiType.ts";
+import "../../styles/cards.css";
 
 const FilmList = () => {
   const [films, setFilms] = useState<ListResponseApiType<FilmType>>();
@@ -63,11 +64,12 @@ const FilmList = () => {
     <div className={"listFilm"} style={{}}>
       {/*<h1>Films</h1>*/}
       <div
+        className={"search-container"}
         style={{
-          display: "flex",
-          alignItems: "flex-start",
-          gap: 10,
+          maxWidth: 1000,
           justifyContent: "space-between",
+          gap: 10,
+          flexWrap: "wrap",
         }}
       >
         <Search
@@ -75,7 +77,6 @@ const FilmList = () => {
           value={title}
           onChange={(e) => setTitle(e.target.value)}
           size={"large"}
-          style={{ marginBottom: 50 }}
           placeholder="Search"
           enterButton
           color={"black"}
@@ -91,7 +92,7 @@ const FilmList = () => {
             (option?.label ?? "").toLowerCase().includes(input.toLowerCase())
           }
           options={starWarsDirectors}
-        />{" "}
+        />
         <Select
           value={filters.producer}
           size={"large"}

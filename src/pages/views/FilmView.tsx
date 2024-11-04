@@ -2,7 +2,6 @@ import Grid from "antd/lib/card/Grid";
 import Row from "antd/lib/row";
 import Col from "antd/lib/col";
 import { getCharacterId, getStarWarsImg } from "../../utils/utils-functions.ts";
-import ImageCarousel from "../../components/ImageCarousel.tsx";
 import { useParams } from "react-router";
 import { useEffect, useState } from "react";
 import { FilmType } from "../../utils/type/FilmType.ts";
@@ -10,6 +9,7 @@ import { getByUrl } from "../../api/swapiService.ts";
 import "../../styles/filmView.css";
 import ModalCharacters from "../../components/ModalCharacters.tsx";
 import ModalSpecie from "../../components/ModalSpecie.tsx";
+import ImageCarousel from "../../components/ImageCarousel.tsx";
 
 const FilmView = () => {
   const { id } = useParams(); // Pega o ID da URL
@@ -54,7 +54,7 @@ const FilmView = () => {
     );
 
   return (
-    <Grid className={"container"}>
+    <Grid className="container">
       <Row gutter={[16, 16]} justify="center" className="film-view-row">
         <Col xs={24} sm={12} md={8} lg={6} className="film-poster">
           <img
@@ -78,9 +78,10 @@ const FilmView = () => {
           <p>{film.opening_crawl}</p>
         </Col>
       </Row>
+
       <Row justify="center" className="characters-section">
         <h2 style={{ textAlign: "center" }}>Characters</h2>
-        <p className={"titleModal"} style={{ textAlign: "center" }}>
+        <p className="titleModal" style={{ textAlign: "center" }}>
           *Click on the image to read more info
         </p>
       </Row>
@@ -93,6 +94,7 @@ const FilmView = () => {
           setOpen(true);
         }}
       />
+
       <Row justify="center" className="characters-section">
         <h2 style={{ textAlign: "center" }}>Species</h2>
       </Row>
@@ -105,8 +107,8 @@ const FilmView = () => {
           setOpenSpecie(true);
         }}
       />
-      <ModalSpecie open={openSpecie} setOpen={setOpenSpecie} id={specie} />
 
+      <ModalSpecie open={openSpecie} setOpen={setOpenSpecie} id={specie} />
       <ModalCharacters open={open} setOpen={setOpen} id={character} />
     </Grid>
   );

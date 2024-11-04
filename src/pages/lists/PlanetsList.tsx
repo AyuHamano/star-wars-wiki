@@ -1,6 +1,7 @@
 import { Table } from "antd";
 import { useEffect, useState } from "react";
 import { getByUrl } from "../../api/swapiService.ts";
+import "../../styles/cards.css";
 
 import Search from "antd/es/input/Search";
 import { ListResponseApiType } from "../../utils/type/ListResponseApiType.ts";
@@ -44,6 +45,7 @@ const PlanetsList = () => {
       sorter: (a, b) =>
         parseInt(a.rotation_period) - parseInt(b.rotation_period),
       render: (text) => (text === "unknown" ? "-" : text),
+      responsive: ["lg"],
     },
     {
       title: "Orbital Period",
@@ -51,6 +53,7 @@ const PlanetsList = () => {
       key: "orbital_period",
       sorter: (a, b) => parseInt(a.orbital_period) - parseInt(b.orbital_period),
       render: (text) => (text === "unknown" ? "-" : text),
+      responsive: ["lg"],
     },
     {
       title: "Diameter",
@@ -65,17 +68,20 @@ const PlanetsList = () => {
       dataIndex: "climate",
       key: "climate",
       width: 150,
+      responsive: ["md"],
     },
     {
       title: "Gravity",
       dataIndex: "gravity",
       key: "gravity",
+      responsive: ["md"],
     },
     {
       title: "Terrain",
       dataIndex: "terrain",
       key: "terrain",
       width: 150,
+      responsive: ["md"],
     },
     {
       title: "Surface Water",
@@ -102,14 +108,7 @@ const PlanetsList = () => {
         flexDirection: "column",
       }}
     >
-      <div
-        style={{
-          display: "flex",
-          alignItems: "flex-start",
-          gap: 10,
-          justifyContent: "space-between",
-        }}
-      >
+      <div className={"search-container"}>
         <Search
           className={"search-box"}
           value={name}
