@@ -1,0 +1,31 @@
+.film-view-row {
+    padding: 16px;
+}
+
+.film-poster img {
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.film-details {
+    text-align: left;
+    padding: 0 16px;
+
+}
+
+.characters-section {
+    margin-top: 24px;
+    display: flex;
+    flex-direction: column;
+}
+
+@media (max-width: 768px) {
+    .film-details {
+        text-align: center;
+        padding: 16px;
+    }
+
+    .characters-section {
+        margin-top: 16px;
+    }
+}
