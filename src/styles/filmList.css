@@ -2,6 +2,12 @@
 .listFilm {
     padding: 20px;
     border-radius: 8px;
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    align-items: center;
+
 }
 
 h1 {
@@ -18,8 +24,9 @@ h1 {
 
 /* Estilos para a tabela customizada */
 .custom-table .ant-table {
-    /*background-color: #14081e; !* Fundo da tabela *!*/
-    background: linear-gradient(135deg, rgba(11, 4, 14, 0.9), rgba(52, 32, 64, 0.8), rgba(12, 5, 18, 0.9));
+    z-index: 3;
+    background-color: #14081e; /* Fundo da tabela */
+    background: linear-gradient(135deg, rgba(37, 17, 46, 0.9), rgb(7, 9, 50), rgba(39, 15, 60, 0.9)) !important;
 
     color: #ffffff; /* Texto branco */
     border-radius: 8px;
@@ -34,10 +41,11 @@ h1 {
 .custom-table .ant-table-tbody > tr > td {
     color: #d1d1d6; /* Texto levemente cinza */
     border-color: #444; /* Bordas discretas */
+    /*background: rgb(12, 5, 18);*/
 }
 
 .custom-table .ant-table-tbody > tr:hover > td {
-    background-color: #472c63 !important;
+    background-color: #161630 !important;
     color: #d6d1d1; /* Texto levemente cinza */
 
 
@@ -51,7 +59,7 @@ h1 {
 
 /* Estilos para o campo de busca */
 .ant-input-affix-wrapper {
-    background-color: #3a3a4c !important;
+    background-color: #020205 !important;
     color: #ffffff !important;
     border: 1px solid #5e5e73;
     border-radius: 4px;
@@ -59,21 +67,22 @@ h1 {
 
 .ant-input-affix-wrapper .ant-input {
     color: #ffffff;
-    background-color: #3a3a4c !important;
+    background-color: rgba(12, 5, 18, 0.9) !important;
 
 }
 
 .ant-input-affix-wrapper:hover {
-    border-color: #757595;
+    border-color: #06061b;
 }
 
 /* Botão de pesquisa */
 .ant-input-search-button {
-    background-color: #4e4e68;
+    background-color: #000000;
     color: #ffffff;
     border: none;
     border-radius: 4px;
 }
+
 
 /* Estilos para o Select */
 .ant-select-selector {
@@ -92,3 +101,27 @@ h1 {
     background-color: #4e4e68;
     color: #ffffff !important;
 }
+
+.ant-pagination-item-active {
+    background-color: #1a1a1a !important; /* Mude para a cor desejada */
+    border-color: #1a1a1a !important; /* Altera a cor da borda */
+}
+
+.ant-pagination-item-active a {
+    color: #ffffff !important; /* Cor do texto na página ativa */
+}
+
+.ant-pagination-item a:hover {
+    color: #ffffff !important; /* Cor do texto na página ativa */
+}
+
+/* Remove o fundo branco ao ordenar uma coluna */
+.ant-table-column-sort {
+    background-color: transparent !important;
+}
+
+.container {
+    margin-top: 50px;
+    padding-inline: 10%;
+}
+
