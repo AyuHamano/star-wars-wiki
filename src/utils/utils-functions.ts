@@ -7,15 +7,6 @@ export function getStarWarsImg(id: string, type: string) {
   return urlImg.replace("{id}", id);
 }
 
-export async function checkImage(url: string): Promise<boolean> {
-  return new Promise((resolve) => {
-    const img = new Image();
-    img.src = url;
-    img.onload = () => resolve(true);
-    img.onerror = () => resolve(false);
-  });
-}
-
 export const getCharacterId = (url: string) => {
   const parts = url.split("/").filter(Boolean);
 

@@ -3,11 +3,11 @@ import { getByUrl } from "../../api/swapiService.ts";
 import "../../styles/cards.css";
 
 import Search from "antd/es/input/Search";
-import { ListResponseApiType } from "../../utils/type/ListResponseApiType.ts";
+import { ListResponseApiType } from "../../type/ListResponseApiType.ts";
 import { Card, Col, Pagination, Row } from "antd";
 import { getCharacterId } from "../../utils/utils-functions.ts";
 import ModalSpecie from "../../components/ModalSpecie.tsx";
-import { SpecieType } from "../../utils/type/SpecieType.ts";
+import { SpecieType } from "../../type/SpecieType.ts";
 
 const SpeciesList = () => {
   const [name, setName] = useState("");

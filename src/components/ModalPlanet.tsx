@@ -1,6 +1,6 @@
 import { Button, Modal } from "antd";
 import Grid from "antd/lib/card/Grid";
-import { PlanetType } from "../utils/type/PlanetType.ts";
+import { PlanetType } from "../type/PlanetType.ts";
 import "react-loading-skeleton/dist/skeleton.css";
 import ModalInfoPlanet from "./ModalInfoPlanet.tsx";
 

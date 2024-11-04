@@ -2,9 +2,9 @@ import { Button, Modal } from "antd";
 import Grid from "antd/lib/card/Grid";
 import { getByUrl } from "../api/swapiService.ts";
 import { useEffect, useState } from "react";
-import { CharacterType } from "../utils/type/CharacterType.ts";
+import { CharacterType } from "../type/CharacterType.ts";
 import { getStarWarsImg } from "../utils/utils-functions.ts";
-import { PlanetType } from "../utils/type/PlanetType.ts";
+import { PlanetType } from "../type/PlanetType.ts";
 import "react-loading-skeleton/dist/skeleton.css";
 import ModalInfoPlanet from "./ModalInfoPlanet.tsx";
 

@@ -1,7 +1,7 @@
 import { Table } from "antd";
 import { ColumnType } from "antd/es/table";
 
-import { FilmType } from "../utils/type/FilmType.ts";
+import { FilmType } from "../type/FilmType.ts";
 import "react-loading-skeleton/dist/skeleton.css";
 import Skeleton from "react-loading-skeleton";
 
@@ -41,6 +41,7 @@ const FilmsTable = ({ filmsList, total, onRowClick }: FilmsTableProps) => {
       title: "Producer",
       key: "producer",
       dataIndex: "producer",
+      width: 400,
       responsive: ["xs", "sm", "md", "lg"],
     },
     {

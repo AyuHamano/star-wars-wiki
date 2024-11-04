@@ -4,7 +4,7 @@ import Col from "antd/lib/col";
 import { getStarWarsImg } from "../../utils/utils-functions.ts";
 import { useParams } from "react-router";
 import { useEffect, useState } from "react";
-import { FilmType } from "../../utils/type/FilmType.ts";
+import { FilmType } from "../../type/FilmType.ts";
 import { getByUrl } from "../../api/swapiService.ts";
 import "../../styles/filmView.css";
 

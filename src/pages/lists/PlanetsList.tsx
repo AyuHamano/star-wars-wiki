@@ -4,8 +4,8 @@ import { getByUrl } from "../../api/swapiService.ts";
 import "../../styles/cards.css";
 
 import Search from "antd/es/input/Search";
-import { ListResponseApiType } from "../../utils/type/ListResponseApiType.ts";
-import { PlanetType } from "../../utils/type/PlanetType.ts";
+import { ListResponseApiType } from "../../type/ListResponseApiType.ts";
+import { PlanetType } from "../../type/PlanetType.ts";
 import { ColumnsType } from "antd/es/table";
 import ModalPlanet from "../../components/ModalPlanet.tsx";
 
@@ -39,12 +39,14 @@ const PlanetsList = () => {
       title: "Name",
       dataIndex: "name",
       key: "name",
+      width: 150,
       sorter: (a, b) => a.name.localeCompare(b.name),
     },
     {
       title: "Diameter",
       dataIndex: "diameter",
       key: "diameter",
+      width: 150,
       sorter: (a, b) => parseInt(a.diameter) - parseInt(b.diameter),
       render: (text) =>
         text === "0" || text === "unknown" ? "-" : `${text} km`,
@@ -60,6 +62,7 @@ const PlanetsList = () => {
       title: "Gravity",
       dataIndex: "gravity",
       key: "gravity",
+      width: 300,
       responsive: ["md"],
     },
     {
@@ -73,6 +76,7 @@ const PlanetsList = () => {
       title: "Population",
       dataIndex: "population",
       key: "population",
+      width: 150,
       sorter: (a, b) => parseInt(a.population) - parseInt(b.population),
       render: (text) => (text === "unknown" ? "-" : text),
     },

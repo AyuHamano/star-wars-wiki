@@ -5,7 +5,7 @@ import Search from "antd/es/input/Search";
 import { Select } from "antd";
 import "../../styles/filmList.css";
 import starWarsDirectors from "../../mock-data/starWarsDirectors.ts";
-import { FilmType } from "../../utils/type/FilmType.ts";
+import { FilmType } from "../../type/FilmType.ts";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../store/store.ts";
 import {
@@ -15,7 +15,7 @@ import {
 } from "../../store/filmsFilterSlice.ts";
 import starWarsProducers from "../../mock-data/starWarsProducers.ts";
 import { useNavigate } from "react-router";
-import { ListResponseApiType } from "../../utils/type/ListResponseApiType.ts";
+import { ListResponseApiType } from "../../type/ListResponseApiType.ts";
 import "../../styles/cards.css";
 
 const FilmList = () => {

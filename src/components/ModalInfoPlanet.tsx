@@ -1,5 +1,5 @@
 import Grid from "antd/lib/card/Grid";
-import { PlanetType } from "../utils/type/PlanetType.ts";
+import { PlanetType } from "../type/PlanetType.ts";
 
 const ModalInfoPlanet = ({
   planet,

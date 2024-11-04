@@ -3,8 +3,8 @@ import { getByUrl } from "../../api/swapiService.ts";
 import "../../styles/cards.css";
 
 import Search from "antd/es/input/Search";
-import { ListResponseApiType } from "../../utils/type/ListResponseApiType.ts";
-import { CharacterType } from "../../utils/type/CharacterType.ts";
+import { ListResponseApiType } from "../../type/ListResponseApiType.ts";
+import { CharacterType } from "../../type/CharacterType.ts";
 import { Card, Col, Pagination, Row } from "antd";
 import ModalCharacters from "../../components/ModalCharacters.tsx";
 import { getCharacterId } from "../../utils/utils-functions.ts";
