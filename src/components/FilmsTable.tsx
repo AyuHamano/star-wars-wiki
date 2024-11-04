@@ -1,11 +1,30 @@
-import { Button, Table } from "antd";
+import { Table } from "antd";
+import { FilmType } from "../utils/type/FilmType.ts";
+import "react-loading-skeleton/dist/skeleton.css";
+import Skeleton from "react-loading-skeleton";
 
-const FilmsTable = ({ filmsList }) => {
+interface FilmsTableProps {
+  filmsList: FilmType[];
+  total: number;
+  onRowClick: (film: FilmType) => void;
+}
+
+const FilmsTable = ({ filmsList, total, onRowClick }: FilmsTableProps) => {
+  const urlImg = "https://starwars-visualguide.com/assets/img/films/{id}.jpg";
+
   const columns = [
     {
       title: "Poster",
-      render: (poster: string) => <img width={60} height={100} src={poster} />,
-      dataIndex: "poster",
+      render: (episode_id: number) => (
+        <img
+          key={episode_id}
+          width={80}
+          height={100}
+          src={urlImg.replace("{id}", episode_id?.toString())}
+        />
+      ),
+      dataIndex: "episode_id", // Define "episode_id" como o dataIndex para acessar o ID diretamente
+      key: "poster",
     },
     {
       title: "Title",
@@ -21,37 +40,37 @@ const FilmsTable = ({ filmsList }) => {
       title: "Producer",
       key: "producer",
       dataIndex: "producer",
+      maxWidth: 400,
+      minWidth: 400,
     },
     {
       title: "Release date",
       key: "release_date",
       dataIndex: "release_date",
     },
-    {
-      title: "Options",
-      key: "release_date",
-      render: () => {
-        return <Button>Read more</Button>;
-      },
-    },
   ];
 
-  const rows = filmsList?.results?.map((item) => ({
-    ...item,
-    poster: `src/assets/films/${item.episode_id}.png`,
-  }));
-
   return (
-    <div>
-      {filmsList?.results?.length > 0 && (
+    <>
+      {filmsList?.length > 0 ? (
         <Table
           className={"custom-table"}
           columns={columns}
-          dataSource={rows}
-          pagination={{ pageSize: 3, total: filmsList?.count, align: "center" }}
+          dataSource={filmsList}
+          pagination={{
+            pageSize: 3,
+            total: total,
+            align: "center",
+            showSizeChanger: false,
+          }}
+          onRow={(film: FilmType) => ({
+            onClick: () => onRowClick(film), // Chama a função ao clicar na linha
+          })}
         />
+      ) : (
+        <Skeleton />
       )}
-    </div>
+    </>
   );
 };
 

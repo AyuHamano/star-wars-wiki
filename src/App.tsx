@@ -5,8 +5,6 @@ function App() {
   return (
     <main className="main-content">
       <Layout />
-      {/*  <FilmList />*/}
-      {/*</Layout>*/}
     </main>
   );
 }
