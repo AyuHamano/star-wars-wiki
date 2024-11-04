@@ -12,6 +12,11 @@
     npm run dev
 ```
 
+### Fazer build
+```
+    npm run build
+```
+
 ### Template do projeto
 - Ant Design
 
