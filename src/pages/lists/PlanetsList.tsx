@@ -8,6 +8,8 @@ import { ListResponseApiType } from "../../type/ListResponseApiType.ts";
 import { PlanetType } from "../../type/PlanetType.ts";
 import { ColumnsType } from "antd/es/table";
 import ModalPlanet from "../../components/ModalPlanet.tsx";
+import Grid from "antd/es/card/Grid";
+import { MoonLoader } from "react-spinners";
 
 const PlanetsList = () => {
   const [name, setName] = useState("");
@@ -16,6 +18,7 @@ const PlanetsList = () => {
   const [planet, setPlanet] = useState<PlanetType>();
   const [currentPage, setCurrentPage] = useState(1); // Estado para a página atual
   const [open, setOpen] = useState<boolean>(false);
+  const [loading, setLoading] = useState(false);
 
   async function getPlanetsList(page: number) {
     const params = {
@@ -23,10 +26,13 @@ const PlanetsList = () => {
       search: name,
     };
     try {
+      setLoading(true);
       const response = await getByUrl("planets", params);
       setPlanets(response);
     } catch (e) {
       alert("Failed to fetch data " + e);
+    } finally {
+      setLoading(false);
     }
   }
 
@@ -104,7 +110,7 @@ const PlanetsList = () => {
           color={"black"}
         />
       </div>
-      {planets?.results.length ? (
+      {planets?.results.length && (
         <Table
           className={"custom-table"}
           columns={planetColumns}
@@ -121,10 +127,17 @@ const PlanetsList = () => {
             onClick: () => onRowClick(planet), // Chama a função ao clicar na linha
           })}
         />
-      ) : (
+      )}
+      {!loading && !planets?.results.length && (
         <div style={{ height: 500 }}>
           <h3 style={{ textAlign: "center" }}>No results found</h3>
         </div>
+      )}
+
+      {loading && (
+        <Grid style={{ padding: 20 }}>
+          <MoonLoader color={"#ffffff"} />
+        </Grid>
       )}
 
       <ModalPlanet open={open} setOpen={setOpen} planet={planet} />

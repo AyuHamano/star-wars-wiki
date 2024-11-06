@@ -17,11 +17,14 @@ import starWarsProducers from "../../mock-data/starWarsProducers.ts";
 import { useNavigate } from "react-router";
 import { ListResponseApiType } from "../../type/ListResponseApiType.ts";
 import "../../styles/cards.css";
+import { MoonLoader } from "react-spinners";
+import Grid from "antd/es/card/Grid";
 
 const FilmList = () => {
   const [films, setFilms] = useState<ListResponseApiType<FilmType>>();
   const [title, setTitle] = useState<string>("");
   const navigate = useNavigate();
+  const [loading, setLoading] = useState(false);
 
   const filters = useSelector(
     (state: RootState) => state.filters as FilmsFilterState,
@@ -32,9 +35,17 @@ const FilmList = () => {
     const params = {
       search: title,
     };
-    const response = await getByUrl("films", params);
 
-    setFilms(response);
+    try {
+      setLoading(true);
+
+      const response = await getByUrl("films", params);
+      setFilms(response);
+    } catch (error) {
+      alert(error);
+    } finally {
+      setLoading(false);
+    }
   }
 
   useEffect(() => {
@@ -61,7 +72,7 @@ const FilmList = () => {
   }, [films, filters]);
 
   return (
-    <div className={"listFilm"} style={{}}>
+    <div className={"listFilm"}>
       <div
         className={"search-container"}
         style={{
@@ -106,15 +117,22 @@ const FilmList = () => {
           options={starWarsProducers}
         />
       </div>
-      <FilmsTable
-        filmsList={filteredFilms ?? []}
-        total={filteredFilms?.length ?? 0}
-        onRowClick={(film: FilmType) => {
-          navigate(`/films/${film.episode_id}`, { state: { film } });
-        }}
-      />
+      {loading && (
+        <Grid style={{ padding: 20 }}>
+          <MoonLoader color={"#ffffff"} />
+        </Grid>
+      )}
+      {!loading && !!filteredFilms?.length && (
+        <FilmsTable
+          filmsList={filteredFilms ?? []}
+          total={filteredFilms?.length ?? 0}
+          onRowClick={(film: FilmType) => {
+            navigate(`/films/${film.episode_id}`, { state: { film } });
+          }}
+        />
+      )}
 
-      {!films?.results?.length && (
+      {!filteredFilms?.length && !loading && (
         <div style={{ height: 500 }}>
           <h3 style={{ textAlign: "center" }}>No results found</h3>
         </div>

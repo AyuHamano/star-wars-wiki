@@ -19,6 +19,7 @@ const CharactersList = () => {
   const [open, setOpen] = useState<boolean>(false);
   const [characterId, setCharacterId] = useState<string>();
   const [loading, setLoading] = useState(false);
+  const { Meta } = Card;
 
   async function getCharacters(page: number) {
     const params = {
@@ -77,7 +78,7 @@ const CharactersList = () => {
             />
           </Row>
 
-          <Row gutter={[20, 20]} justify="center">
+          <Row gutter={[16, 16]} justify="center">
             {characters?.results.map((character) => (
               <Col
                 className="listCard"
@@ -103,7 +104,7 @@ const CharactersList = () => {
                     />
                   }
                 >
-                  <Card.Meta
+                  <Meta
                     title={character.name}
                     description={`Birth Year: ${character.birth_year}`}
                   />
