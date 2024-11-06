@@ -79,7 +79,6 @@ body, html, #root {
 }
 
 .modalInfo .ant-modal-content {
-    /*background-color: rgb(7, 7, 7);*/
     background: linear-gradient(135deg, rgb(37, 17, 46), rgb(7, 9, 50), rgb(39, 15, 60)) !important;
 
     color: #ffffff;
@@ -89,7 +88,20 @@ body, html, #root {
     display: flex;
     gap: 50px;
 
+    @media (max-width: 770px) {
+        flex-direction: column;
+        align-items: center;
 
+        .ant-card-grid {
+
+            text-align: center;
+        }
+
+        h3 {
+            text-align: center;
+        }
+
+    }
 }
 
 .titleModal {
