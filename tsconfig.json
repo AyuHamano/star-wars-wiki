@@ -1,10 +1,7 @@
 {
   "files": [],
   "compilerOptions": {
-    "types": [
-      "jest",
-      "@testing-library/jest-dom"
-    ]
+    "isolatedModules": false,
   },
   "references": [
     {
