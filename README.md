@@ -1,6 +1,6 @@
 # React + TypeScript + Vite
 
-O projeto voltado para os fãs de Star Wars que consome a Api do [SWAPI](https://swapi.dev/documentation#films e as
+O projeto voltado para os fãs de Star Wars que consome a Api do [SWAPI](https://swapi.dev/documentation#films) e as
 imagens do [SW Visual Guide](https://starwars-visualguide.com/#/)
 
 ### Comandos inicializar o projeto:
